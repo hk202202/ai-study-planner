@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-surface: #fff;
+}
+
+/* Dark mode swaps the palette instead of adding dark: classes everywhere.
+   Values must be literals: Tailwind only emits variables for colours in use. */
+.dark {
+  color-scheme: dark;
+  --color-surface: oklch(20.8% 0.042 265.755);
+  --color-slate-50: oklch(12.9% 0.042 264.695);
+  --color-slate-100: oklch(27.9% 0.041 260.031);
+  --color-slate-200: oklch(27.9% 0.041 260.031);
+  --color-slate-300: oklch(37.2% 0.044 257.287);
+  --color-slate-400: oklch(55.4% 0.046 257.417);
+  --color-slate-500: oklch(70.4% 0.04 256.788);
+  --color-slate-600: oklch(86.9% 0.022 252.894);
+  --color-slate-700: oklch(92.9% 0.013 255.508);
+  --color-slate-800: oklch(96.8% 0.007 247.896);
+  --color-slate-900: oklch(98.4% 0.003 247.858);
+  --color-slate-950: oklch(100% 0 0);
+  --color-red-50: oklch(63.7% 0.237 25.331 / 0.12);
+  --color-red-100: oklch(63.7% 0.237 25.331 / 0.2);
+  --color-red-200: oklch(63.7% 0.237 25.331 / 0.35);
+  --color-red-600: oklch(70.4% 0.191 22.216);
+  --color-red-700: oklch(80.8% 0.114 19.571);
+  --color-red-800: oklch(88.5% 0.062 18.334);
+  --color-orange-50: oklch(70.5% 0.213 47.604 / 0.12);
+  --color-orange-100: oklch(70.5% 0.213 47.604 / 0.2);
+  --color-orange-200: oklch(70.5% 0.213 47.604 / 0.35);
+  --color-orange-600: oklch(75% 0.183 55.934);
+  --color-orange-700: oklch(83.7% 0.128 66.29);
+  --color-orange-800: oklch(90.1% 0.076 70.697);
+  --color-amber-50: oklch(76.9% 0.188 70.08 / 0.12);
+  --color-amber-100: oklch(76.9% 0.188 70.08 / 0.2);
+  --color-amber-200: oklch(76.9% 0.188 70.08 / 0.35);
+  --color-amber-600: oklch(82.8% 0.189 84.429);
+  --color-amber-700: oklch(87.9% 0.169 91.605);
+  --color-amber-800: oklch(92.4% 0.12 95.746);
+  --color-green-50: oklch(72.3% 0.219 149.579 / 0.12);
+  --color-green-100: oklch(72.3% 0.219 149.579 / 0.2);
+  --color-green-200: oklch(72.3% 0.219 149.579 / 0.35);
+  --color-green-600: oklch(79.2% 0.209 151.711);
+  --color-green-700: oklch(87.1% 0.15 154.449);
+  --color-green-800: oklch(92.5% 0.084 155.995);
+  --color-blue-50: oklch(62.3% 0.214 259.815 / 0.12);
+  --color-blue-100: oklch(62.3% 0.214 259.815 / 0.2);
+  --color-blue-200: oklch(62.3% 0.214 259.815 / 0.35);
+  --color-blue-600: oklch(70.7% 0.165 254.624);
+  --color-blue-700: oklch(80.9% 0.105 251.813);
+  --color-blue-800: oklch(88.2% 0.059 254.128);
+  --color-indigo-50: oklch(58.5% 0.233 277.117 / 0.12);
+  --color-indigo-100: oklch(58.5% 0.233 277.117 / 0.2);
+  --color-indigo-200: oklch(58.5% 0.233 277.117 / 0.35);
+  --color-indigo-600: oklch(58.5% 0.233 277.117);
+  --color-indigo-700: oklch(78.5% 0.115 274.713);
+  --color-indigo-800: oklch(87% 0.065 274.039);
+  --color-purple-50: oklch(62.7% 0.265 303.9 / 0.12);
+  --color-purple-100: oklch(62.7% 0.265 303.9 / 0.2);
+  --color-purple-200: oklch(62.7% 0.265 303.9 / 0.35);
+  --color-purple-600: oklch(71.4% 0.203 305.504);
+  --color-purple-700: oklch(82.7% 0.119 306.383);
+  --color-purple-800: oklch(90.2% 0.063 306.703);
+}
+
+body {
+  @apply bg-slate-50 text-slate-800 antialiased;
+}
+
+.card {
+  @apply rounded-xl border border-slate-200 bg-surface p-5 shadow-sm;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-700 dark:hover:bg-indigo-400 disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center rounded-lg border border-slate-300 bg-surface px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100 disabled:opacity-50;
+}
+
+.input {
+  @apply w-full rounded-lg border border-slate-300 bg-surface px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200;
+}
+
+.label {
+  @apply mb-1 block text-sm font-medium text-slate-700;
+}
+
+.flip-card {
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+
+.flip-card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-face {
+  backface-visibility: hidden;
+}
+
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+/* react-big-calendar and recharts ship hard-coded light colours. */
+.dark .rbc-calendar,
+.dark .rbc-calendar *,
+.dark .rbc-day-slot .rbc-time-slot {
+  border-color: var(--color-slate-200);
+}
+
+.dark .rbc-off-range-bg {
+  background: var(--color-slate-50);
+}
+
+.dark .rbc-today {
+  background: var(--color-indigo-50);
+}
+
+.dark .rbc-toolbar button {
+  color: var(--color-slate-700);
+}
+
+.dark .rbc-toolbar button:hover,
+.dark .rbc-toolbar button:focus,
+.dark .rbc-toolbar button.rbc-active {
+  background: var(--color-slate-100);
+  color: var(--color-slate-900);
+  box-shadow: none;
+}
+
+.dark .rbc-overlay {
+  background: var(--color-surface);
+}
+
+.dark .recharts-cartesian-grid line,
+.dark .recharts-cartesian-axis-line,
+.dark .recharts-cartesian-axis-tick-line {
+  stroke: var(--color-slate-300);
+}
+
+.dark .recharts-cartesian-axis-tick-value {
+  fill: var(--color-slate-500);
+}
+
+.dark .recharts-tooltip-cursor {
+  fill: var(--color-slate-100);
+}
+
+.dark .recharts-default-tooltip {
+  background: var(--color-surface) !important;
+  border-color: var(--color-slate-200) !important;
+}
+
+.dark .recharts-tooltip-label {
+  color: var(--color-slate-800);
+}
